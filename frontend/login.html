@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+</head>
+
+<body>
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+        <label>Email</label><br>
+        <input type="email" id="email" placeholder="Enter Email">
+        <br><br>
+
+        <label>Password</label><br>
+        <input type="password" id="password" placeholder="Enter Password">
+        <br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="error" style="color:red;"></p>
+
+    <script>
+        function validateEmail(email) {
+            return email.includes("@");
+        }
+
+        function validatePassword(password) {
+            return password.length >= 6;
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let error = document.getElementById("error");
+
+            if (!validateEmail(email)) {
+                error.innerText = "Invalid email";
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                error.innerText = "Password must be 6 characters";
+                return;
+            }
+
+            error.innerText = "Login data valid ✅";
+        });
+    </script>
+
+</body>
+
+</html>
